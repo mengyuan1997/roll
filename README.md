@@ -1,19 +1,11 @@
-# roll
+### 滚动插件
 
-## Project setup
-```
-npm install
-```
+在分支iscroll分支中
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+在项目中，多个成员引用同一个组件，起不同的名字，这样名字比较多，有缺点。解决办法：在公共组件中，一般都是内部定好名字，然后使用者使用内部定好的名字（直接在js中使用nama属性）。使用组件内部的名称作为组件标签的名字。这样名字是 组件名称.name，这样key是一个表达式，因此添加 []。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+在组建中滚动视图的大小有外部（调用）决定，XY周是否滚动也由外部决定，在组建中设置接受以及默认值。在组件内部进行引入，在mounted里面创建滚动视图
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+需要加载后台数据的时候，在加载到数据之后，可能会具有延迟，因此需要重新刷新滚动视图，在获取完数据之后通过$nextTime方式尽心调用组件内部的方法进行刷新滚动视图。但是每次加载有需要加载比较麻烦，尤其是加载图片的时候，因此在组件内部设置一个监听事件，在滚动之前重新刷新一次滚动视图，保证每次滚动的时候，树洞视图都是最新的。
